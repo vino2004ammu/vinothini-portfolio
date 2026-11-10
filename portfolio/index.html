@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vinothini I. | Full Stack Python Developer</title>
+  <meta name="description" content="Portfolio of Vinothini I., Full Stack Python Developer and Anna University Computer Science graduate building web apps with Django, FastAPI, SQL, and Machine Learning.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Montserrat:wght@600;700;800;900&family=Outfit:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" style="position:fixed;inset:0;background:#060a12;z-index:99999;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem;">
+    <div style="max-width:500px;width:100%;text-align:center;">
+      <p style="font-family:var(--font-mono);font-size:12px;color:var(--accent-color);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.5rem;">Portfolio 2026</p>
+      <h1 style="font-family:var(--font-display);font-size:2.5rem;font-weight:800;color:#fff;margin-bottom:0.25rem;">VINOTHINI I</h1>
+      <p style="font-family:var(--font-mono);font-size:14px;color:var(--muted-color);text-transform:uppercase;margin-bottom:2rem;">Full Stack Python Developer</p>
+      <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:12px;margin-bottom:0.5rem;">
+        <span style="color:var(--muted-color)">Initializing Interface</span>
+        <span id="loading-percent" style="color:var(--accent-color);font-weight:bold;">00%</span>
+      </div>
+      <div style="width:100%;height:4px;background:#1e293b;border-radius:2px;overflow:hidden;">
+        <div id="loading-bar" style="width:0%;height:100%;background:linear-gradient(90deg, #d4af37, #f3ca68);transition:width 0.1s ease;"></div>
+      </div>
+      <button id="loading-skip" style="margin-top:1.5rem;background:none;border:1px solid #1e293b;color:var(--muted-color);font-family:var(--font-mono);font-size:11px;padding:4px 12px;border-radius:4px;cursor:pointer;">Skip Intro</button>
+    </div>
+  </div>
+
+  <!-- Custom Cursor Elements -->
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-ring">
+    <span class="custom-cursor-label">VIEW</span>
+  </div>
+
+  <!-- Top Navbar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="nav-brand" data-cursor="HOME">
+        <span style="color:var(--accent-color);">V</span>INOTHINI <span style="color:var(--accent-color);font-family:var(--font-mono);font-size:14px;">I</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div>
+        <a href="#contact" class="btn-primary" data-cursor="TALK">Let's Talk</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="section" style="min-height:90vh;display:flex;align-items:center;padding-top:8rem;">
+    <div class="container grid-2" style="align-items:center;">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:#0d1527;border:1px solid rgba(245,158,11,0.3);border-radius:20px;font-family:var(--font-mono);font-size:12px;color:var(--muted-color);margin-bottom:1.5rem;">
+          <span style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+          <span>Open to Work · Immediate Joining</span>
+        </div>
+        <p style="font-family:var(--font-mono);color:var(--accent-color);text-transform:uppercase;letter-spacing:0.2em;font-size:14px;font-weight:600;margin-bottom:0.5rem;">Hello, I'm</p>
+        <h1 style="font-size:3.5rem;font-weight:800;line-height:1.1;margin-bottom:0.75rem;">VINOTHINI <span class="gold-gradient-text">I</span></h1>
+        <p style="font-size:1.5rem;color:var(--muted-color);font-weight:500;margin-bottom:1.5rem;">Full Stack Python Developer</p>
+        <div style="margin-bottom:1.5rem;display:flex;flex-direction:column;gap:0.6rem;max-width:560px;font-size:14px;color:var(--muted-color);line-height:1.6;">
+          <div style="display:flex;align-items:flex-start;gap:8px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--accent-color);margin-top:8px;shrink:0;"></span>
+            <span><strong style="color:#fff;">Education:</strong> B.E. Computer Science &amp; Engineering graduate from Anna University (8.49 CGPA).</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:8px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--accent-color);margin-top:8px;shrink:0;"></span>
+            <span><strong style="color:#fff;">Specialization:</strong> Full Stack Python Developer with hands-on expertise in Django, FastAPI, and SQL.</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:8px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--accent-color);margin-top:8px;shrink:0;"></span>
+            <span><strong style="color:#fff;">What I Build:</strong> Robust end-to-end web platforms, secure RESTful APIs, and responsive interfaces.</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;">
+          <a href="#projects" class="btn-primary" data-cursor="EXPLORE">View My Projects →</a>
+        </div>
+      </div>
+
+      <!-- Right Column: Pure Circular Portrait Frame with Open to Work badge -->
+      <div style="display:flex;justify-content:center;position:relative;">
+        <div style="width:320px;height:320px;border-radius:50%;background:linear-gradient(135deg, var(--accent-color), #1e293b, #b45309);padding:4px;box-shadow:0 20px 50px rgba(0,0,0,0.8);position:relative;">
+          <div style="width:100%;height:100%;background:var(--background-alt);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+            <img id="profile-img" src="images/profile.svg" alt="Vinothini I" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.src='images/profile.png'" />
+          </div>
+          <!-- Floating Open to Work Badge -->
+          <div style="position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);padding:8px 20px;background:var(--card-color);border:1px solid var(--accent-color);border-radius:30px;box-shadow:0 8px 25px rgba(0,0,0,0.7);display:flex;align-items:center;gap:8px;white-space:nowrap;">
+            <span style="width:8px;height:8px;border-radius:50%;background:#10b981;display:inline-block;"></span>
+            <span style="font-size:11px;font-weight:700;letter-spacing:0.1em;color:#fff;text-transform:uppercase;">OPEN TO WORK</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section section-alt">
+    <div class="container">
+      <div style="max-width:700px;margin-bottom:3rem;">
+        <p style="font-family:var(--font-mono);font-size:12px;color:var(--accent-color);text-transform:uppercase;letter-spacing:0.2em;margin-bottom:0.5rem;">01 · Engineering Background</p>
+        <h2 style="font-size:2.5rem;font-weight:800;margin-bottom:1rem;">Engineering <span class="gold-gradient-text">Background</span></h2>
+        <p style="color:var(--muted-color);font-size:1.05rem;line-height:1.7;">
+          Computer Science and Engineering graduate specializing in Python Full Stack Development with hands-on project and internship experience.
+        </p>
+      </div>
+
+      <!-- Capability Cards Grid -->
+      <div class="grid-4" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:1.5rem;margin-top:2rem;">
+        <div class="card" data-cursor="VALUE">
+          <p style="font-family:var(--font-mono);font-size:10px;color:var(--accent-color);text-transform:uppercase;margin-bottom:0.5rem;">CODE QUALITY</p>
+          <h3 style="font-size:1.15rem;margin-bottom:0.5rem;color:#fff;">Clean Code &amp; OOP</h3>
+          <p style="font-size:12px;color:var(--muted-color);line-height:1.6;">Modular, well-documented Python code following object-oriented architecture and industry best practices.</p>
+        </div>
+        <div class="card" data-cursor="VALUE">
+          <p style="font-family:var(--font-mono);font-size:10px;color:var(--accent-color);text-transform:uppercase;margin-bottom:0.5rem;">CORE FRAMEWORK</p>
+          <h3 style="font-size:1.15rem;margin-bottom:0.5rem;color:#fff;">Django &amp; Backend</h3>
+          <p style="font-size:12px;color:var(--muted-color);line-height:1.6;">Class-Based Views, robust ORM query optimization, secure authentication, and scalable routing.</p>
+        </div>
+        <div class="card" data-cursor="VALUE">
+          <p style="font-family:var(--font-mono);font-size:10px;color:var(--accent-color);text-transform:uppercase;margin-bottom:0.5rem;">DATA INTEGRITY</p>
+          <h3 style="font-size:1.15rem;margin-bottom:0.5rem;color:#fff;">Relational SQL</h3>
+          <p style="font-size:12px;color:var(--muted-color);line-height:1.6;">Schema normalization, joins, aggregations, and CRUD workflows across MySQL, SQLite, and Oracle SQL.</p>
+        </div>
+        <div class="card" data-cursor="VALUE">
+          <p style="font-family:var(--font-mono);font-size:10px;color:var(--accent-color);text-transform:uppercase;margin-bottom:0.5rem;">WORK READINESS</p>
+          <h3 style="font-size:1.15rem;margin-bottom:0.5rem;color:#fff;">Immediate Contributor</h3>
+          <p style="font-size:12px;color:var(--muted-color);line-height:1.6;">Available immediately with continuous growth mindset, ready to add tangible value to engineering teams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div style="max-width:700px;margin-bottom:3rem;">
+        <p style="font-family:var(--font-mono);font-size:12px;color:var(--accent-color);text-transform:uppercase;letter-spacing:0.2em;margin-bottom:0.5rem;">02 · Selected Portfolio Works</p>
+        <h2 style="font-size:2.5rem;font-weight:800;margin-bottom:1rem;">Real-World <span class="gold-gradient-text">Software Projects</span></h2>
+        <p style="color:var(--muted-color);font-size:1.05rem;">Real software built with Python, Django, SQL, and clean user interfaces.</p>
+      </div>
+
+      <div class="grid-3">
+        <!-- Project 1 -->
+        <div class="card" data-cursor="VIEW">
+          <p style="font-family:var(--font-mono);font-size:12px;color:var(--accent-color);margin-bottom:0.5rem;">01 · Machine Learning</p>
+          <h3 style="font-size:1.25rem;margin-bottom:0.5rem;">Marine Debris Detection System</h3>
+          <p style="color:var(--muted-color);font-size:13px;line-height:1.6;margin-bottom:1rem;">
+            A hybrid CNN and Random Forest model engineered to detect marine debris in ocean imagery, integrated with Clarifai API and Voila interactive interface.
+          </p>
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--accent-color);margin-bottom:1.5rem;">Python · CNN · Random Forest · Clarifai API</p>
+          <a href="https://github.com/vino2004ammu/Marine-Debris-Detection-System" target="_blank" class="btn-secondary" style="font-size:12px;padding:0.5rem 1rem;">View Repository →</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card" data-cursor="VIEW">
+          <p style="font-family:var(--font-mono);font-size:12px;color:var(--accent-color);margin-bottom:0.5rem;">02 · Django Web App</p>
+          <h3 style="font-size:1.25rem;margin-bottom:0.5rem;">Job Application Tracker</h3>
+          <p style="color:var(--muted-color);font-size:13px;line-height:1.6;margin-bottom:1rem;">
+            Full-featured Django web application with Class-Based Views for CRUD operations and a responsive Bootstrap 5 interface with instant JavaScript filtering.
+          </p>
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--accent-color);margin-bottom:1.5rem;">Django · Python · Bootstrap 5 · SQL</p>
+          <a href="https://github.com/vino2004ammu/Job-Application-Tracker" target="_blank" class="btn-secondary" style="font-size:12px;padding:0.5rem 1rem;">View Repository →</a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card" data-cursor="VIEW">
+          <p style="font-family:var(--font-mono);font-size:12px;color:var(--accent-color);margin-bottom:0.5rem;">03 · Full Stack System</p>
+          <h3 style="font-size:1.25rem;margin-bottom:0.5rem;">Chiron — Company Management</h3>
+          <p style="color:var(--muted-color);font-size:13px;line-height:1.6;margin-bottom:1rem;">
+            Internal company management system built in Django with role-based records, SQLite database modeling, and customized administrative dashboard.
+          </p>
+          <p style="font-family:var(--font-mono);font-size:11px;color:var(--accent-color);margin-bottom:1.5rem;">Django · Python · SQLite · CSS</p>
+          <a href="https://github.com/vino2004ammu/Chiron-Company-Management-System" target="_blank" class="btn-secondary" style="font-size:12px;padding:0.5rem 1rem;">View Repository →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section section-alt">
+    <div class="container" style="max-width:800px;">
+      <div style="text-align:center;margin-bottom:3rem;">
+        <p style="font-family:var(--font-mono);font-size:12px;color:var(--accent-color);text-transform:uppercase;letter-spacing:0.2em;margin-bottom:0.5rem;">03 · Initiative Content</p>
+        <h2 style="font-size:2.5rem;font-weight:800;margin-bottom:1rem;">LET'S BUILD <span class="gold-gradient-text">SOMETHING USEFUL.</span></h2>
+        <p style="color:var(--muted-color);font-size:1.05rem;">Have a project, job opening, or internship opportunity?</p>
+      </div>
+
+      <div class="card">
+        <form id="contact-form" style="display:flex;flex-direction:column;gap:1.25rem;">
+          <input type="text" required placeholder="Your Full Name" style="width:100%;padding:1rem;background:#060a12;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;">
+          <input type="email" required placeholder="Your Email Address" style="width:100%;padding:1rem;background:#060a12;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;">
+          <input type="text" placeholder="Subject" style="width:100%;padding:1rem;background:#060a12;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;">
+          <select style="width:100%;padding:1rem;background:#060a12;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;">
+            <option value="Full-Time Role">Full-Time Role Opportunity</option>
+            <option value="Job Opening">Job Opening</option>
+            <option value="Internship Opportunity">Internship Opportunity</option>
+            <option value="Software Project">Software Project</option>
+          </select>
+          <textarea required rows="4" placeholder="Your Message" style="width:100%;padding:1rem;background:#060a12;border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#fff;resize:none;"></textarea>
+          <button type="submit" class="btn-primary" style="justify-content:center;padding:1rem;" data-cursor="SEND">SEND MESSAGE</button>
+        </form>
+        <div id="contact-success" style="display:none;text-align:center;padding:2rem;">
+          <h3 style="color:var(--accent-color);font-size:1.5rem;margin-bottom:0.5rem;">MESSAGE SENT ✓</h3>
+          <p style="color:var(--muted-color);font-size:14px;">Thank you for reaching out! Vinothini will get back to you promptly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Back to Top Button -->
+  <button id="back-to-top" style="display:none;position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;background:#0d1527;border:1px solid var(--accent-color);color:var(--accent-color);align-items:center;justify-content:center;cursor:pointer;font-size:20px;z-index:900;" data-cursor="TOP">↑</button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
