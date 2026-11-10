@@ -60,7 +60,7 @@ export const PORTFOLIO_CONFIG = {
     name: "VINOTHINI I",
     role: "Full Stack Python Developer",
     degree: "B.E. Computer Science & Engineering",
-    profileImage: "/images/profile.svg", // Valid vector portrait asset in public/images/profile.svg
+    profileImage: "/images/profile.jpg", // Vinothini I permanent professional portrait
     location: "Kanyakumari, Tamil Nadu, India",
     phone: "+91 6369660513",
     email: "vino2004ammu@gmail.com",

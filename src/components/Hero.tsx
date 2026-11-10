@@ -1,13 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import { ArrowDown, Github, Linkedin, Mail, Camera, RotateCcw, CheckCircle2, FileText, ArrowRight } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail, FileText, ArrowRight } from 'lucide-react';
 import { PORTFOLIO_CONFIG } from '../data/portfolioData';
-import {
-  getInitialPhotoSync,
-  getSavedPhotoAsync,
-  saveProfilePhoto,
-  removeProfilePhoto,
-  compressImageFile,
-} from '../utils/photoStorage';
 
 interface HeroProps {
   onNavigateToProjects: () => void;
@@ -25,32 +18,11 @@ const ROLES = [
 export default function Hero({ onNavigateToProjects, onNavigateToContact, onOpenResume }: HeroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-
-  const defaultCodePhoto = PORTFOLIO_CONFIG.personal.profileImage;
-  const [customPhoto, setCustomPhoto] = useState<string | null>(() => getInitialPhotoSync());
-  const [failedSrc, setFailedSrc] = useState<string | null>(null);
-  const [isSaving, setIsSaving] = useState(false);
-  const [saveSuccessMsg, setSaveSuccessMsg] = useState(false);
-
-  const activePhoto = customPhoto || defaultCodePhoto || null;
-
-  useEffect(() => {
-    let isMounted = true;
-    getSavedPhotoAsync().then((photo) => {
-      if (isMounted && photo) {
-        setCustomPhoto(photo);
-      }
-    });
-    return () => {
-      isMounted = false;
-    };
-  }, []);
 
   useEffect(() => {
     const current = ROLES[roleIndex];
@@ -85,49 +57,6 @@ export default function Hero({ onNavigateToProjects, onNavigateToContact, onOpen
 
   const handleMouseLeave = () => {
     setMousePos({ x: 0, y: 0 });
-  };
-
-  const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    try {
-      setIsSaving(true);
-      const compressed = await compressImageFile(file, 640, 0.88);
-      setCustomPhoto(compressed);
-      setFailedSrc(null);
-
-      const result = await saveProfilePhoto(compressed);
-      if (result.url) {
-        setCustomPhoto(result.url);
-      }
-      setSaveSuccessMsg(true);
-      setTimeout(() => setSaveSuccessMsg(false), 4500);
-    } catch (err) {
-      console.error('Failed to save profile photo:', err);
-    } finally {
-      setIsSaving(false);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
-    }
-  };
-
-  const handleRemovePhoto = async (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setIsSaving(true);
-    try {
-      await removeProfilePhoto();
-      setCustomPhoto(null);
-      setFailedSrc(null);
-    } catch (err) {
-      console.error('Failed to reset photo:', err);
-    } finally {
-      setIsSaving(false);
-      if (fileInputRef.current) {
-        fileInputRef.current.value = '';
-      }
-    }
   };
 
   const socialLinks = [
@@ -275,76 +204,24 @@ export default function Hero({ onNavigateToProjects, onNavigateToContact, onOpen
             />
 
             {/* Circular Profile Frame */}
-            <div
-              onClick={() => fileInputRef.current?.click()}
-              className="absolute inset-0 rounded-full bg-gradient-to-br from-[#eab308]/60 via-white/10 to-[#ca8a04]/50 p-[2px] shadow-[0_15px_50px_rgba(0,0,0,0.8)] cursor-pointer group"
-              title="Click to change profile picture"
-            >
+            <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#eab308]/60 via-white/10 to-[#ca8a04]/50 p-[2px] shadow-[0_15px_50px_rgba(0,0,0,0.8)] group select-none">
               <div className="h-full w-full overflow-hidden rounded-full bg-[#050505] relative flex items-center justify-center">
-                {activePhoto && activePhoto !== failedSrc ? (
-                  <img
-                    src={activePhoto}
-                    alt="Vinothini I"
-                    onError={() => {
-                      if (customPhoto && defaultCodePhoto && activePhoto === customPhoto) {
-                        setFailedSrc(customPhoto);
-                      } else {
-                        setFailedSrc(activePhoto);
-                      }
-                    }}
-                    className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
-                ) : (
-                  <div className="h-full w-full rounded-full bg-gradient-to-b from-[#1c1605] to-[#050505] flex flex-col items-center justify-center p-6 text-center select-none">
-                    <span className="font-display-name font-black text-5xl sm:text-6xl text-[#fef08a] tracking-tight">
-                      VI
-                    </span>
-                    <span className="mt-2 font-display-name font-bold text-xl text-[#eab308]">
-                      Vinothini I
-                    </span>
-                    <span className="mt-1 text-xs font-mono uppercase tracking-wider text-[#b8b4ae]">
-                      Python Full Stack
-                    </span>
-                  </div>
-                )}
-
-                {/* Upload Overlay */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center gap-1 text-white backdrop-blur-[2px]">
-                  <Camera className="w-5 h-5 text-[#eab308]" />
-                  <span className="text-xs font-sans font-semibold">Change Photo</span>
-                  {customPhoto && (
-                    <button
-                      type="button"
-                      onClick={handleRemovePhoto}
-                      className="mt-1 flex items-center gap-1 text-[11px] text-rose-300 hover:text-rose-200 underline font-sans py-0.5 px-2"
-                    >
-                      <RotateCcw className="w-3 h-3" />
-                      <span>Reset</span>
-                    </button>
-                  )}
-                </div>
+                <img
+                  src={PORTFOLIO_CONFIG.personal.profileImage}
+                  alt="Vinothini I"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src.indexOf('profile_user.jpg') === -1) {
+                      target.src = '/images/profile_user.jpg';
+                    }
+                  }}
+                  className="h-full w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
               </div>
             </div>
-
-            {/* Hidden Input for Photo Upload */}
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handlePhotoUpload}
-              accept="image/*"
-              className="hidden"
-            />
           </div>
         </div>
       </div>
-
-      {/* Success notification if photo saved */}
-      {saveSuccessMsg && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 px-4 py-2.5 text-xs text-emerald-300 shadow-xl backdrop-blur-md animate-in fade-in duration-300">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-          <span>Profile photo updated successfully!</span>
-        </div>
-      )}
 
       {/* Scroll Down Button */}
       <button
